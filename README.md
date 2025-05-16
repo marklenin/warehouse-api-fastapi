@@ -21,6 +21,7 @@ Then install fastapp using all flag like
 
 pip install fastapi[all]
 
+
 Then go this repo folder in your local computer run follwoing command
 
 

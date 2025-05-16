@@ -11,6 +11,7 @@ packages = [{include = "wms"}]
 python = ">=3.13"
 fastapi = "^0.115.12"
 uvicorn = {extras = ["standart"], version = "^0.34.2"}
+sqlalchemy = "^2.0.41"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.3.5"

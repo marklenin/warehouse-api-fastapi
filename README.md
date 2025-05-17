@@ -1,4 +1,4 @@
-Backend clone of social media app by using FastAPI
+REST API for warehouse inventory management built with FastAPI. 
 This API has 2 routes
 1) Product route
 This route is reponsible for creating products, deleting product, updating product and Checkinh product

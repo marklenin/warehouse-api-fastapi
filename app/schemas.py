@@ -37,7 +37,7 @@ class OrderItem(BaseModel):
     id: int
     product_id: int
     quantity: int
-    product: ProductShort  # ✅ nested product info
+    product: ProductShort
     class Config:
         orm_mode = True
 

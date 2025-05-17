@@ -3,8 +3,7 @@ from typing import List
 from datetime import datetime
 from .models import OrderStatus
 
-
-#Product
+# Product
 class ProductBase(BaseModel):
     title: str
     description: str
@@ -13,15 +12,20 @@ class ProductBase(BaseModel):
 
 class Product(ProductBase):
     id: int
-    
+    class Config:
+        orm_mode = True
+
+class ProductShort(BaseModel):  # ✅ used for embedding in OrderItem
+    id: int
+    title: str
+    price: float
     class Config:
         orm_mode = True
 
 class ProductCreate(ProductBase):
     pass
 
-
-#Order
+# Order
 class OrderItemCreate(BaseModel):
     product_id: int
     quantity: int
@@ -33,9 +37,7 @@ class OrderItem(BaseModel):
     id: int
     product_id: int
     quantity: int
-    title: str
-    price: float
-    
+    product: ProductShort  # ✅ nested product info
     class Config:
         orm_mode = True
 
@@ -44,8 +46,7 @@ class Order(BaseModel):
     created_at: datetime
     status: OrderStatus
     items: List[OrderItem]
-
-    class Config: 
+    class Config:
         orm_mode = True
 
 class OrderStatusUpdate(BaseModel):

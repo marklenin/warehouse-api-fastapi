@@ -49,3 +49,4 @@ class OrderItem(Base):
     product_id: Mapped[int] = mapped_column(BigInteger, ForeignKey("products.id", ondelete="CASCADE"))
     quantity: Mapped[int] = mapped_column(Integer)
     order = relationship("Order", back_populates="items")
+    product = relationship("Product")

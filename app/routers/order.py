@@ -1,5 +1,5 @@
 from fastapi import APIRouter, Depends, HTTPException, status, Response
-from sqlalchemy.orm import Session
+from sqlalchemy.orm import Session, joinedload
 from typing import List
 from .. import models, schemas
 from ..database import get_db
@@ -13,7 +13,7 @@ router = APIRouter(
 #Get all
 @router.get("/", response_model = List[schemas.Order])
 def get_orders(db:Session = Depends(get_db)):
-    orders = db.query(models.Order).all()
+    orders = db.query(models.Order).options(joinedload(models.Order.items).joinedload(models.OrderItem.product)).all()
     return orders
 
 
